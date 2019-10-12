@@ -1,0 +1,21 @@
+<div class="container" style="text-align: center;">
+    <div class="row">
+        <div class="col-12">
+            <h1>ALL BLOGS</h1>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="row" style="text-align: center;">
+        <div *ngFor = "let blog of allBlogs" class="col-12 col-sm-6 col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{blog.title}}</div>
+                <div class="panel-body">{{blog.description}}</div>
+                <div class="panel-footer">
+                    This blog was created on {{blog.created|date}} <br>by {{blog.author}}
+                    <br><br>
+                    <a [routerLink]="['/blog',blog.blogId]" class="btn btn-primary">READ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
