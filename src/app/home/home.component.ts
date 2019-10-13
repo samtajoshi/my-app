@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 //import blog-http service
-import { BlogService } from '../blog.service';
+import { BlogHttpService } from '../blog-http.service';
 
 @Component({
   selector: 'app-home',
@@ -13,20 +13,20 @@ export class HomeComponent implements OnInit {
 
 public allBlogs : any;
 
-  constructor(public blogHttpService : BlogService) { 
-    console.log("constructor of home.component.ts...initialising blogHttpService after installing")
+  constructor(public blogHttpService : BlogHttpService) {    
+   
     
   }
 
   ngOnInit() {
-    console.log('ngOnit of home.component.ts is called , and then getAllBlogs() from blog-http.service is called');
+    
 
-    this.allBlogs = this.blogHttpService.getAllBlogs();
-    /*this.allBlogs = this.blogHttpService.getAllBlogs().subscribe(
+    //this.allBlogs = this.blogHttpService.getAllBlogs();
+    this.allBlogs = this.blogHttpService.getAllBlogs().subscribe(
 
-      data => {
-        console.log(data);
-        this.allBlogs = data["data"];
+      response => {
+        console.log(response);
+        this.allBlogs = response.data;
       },
 
       error => {
@@ -34,9 +34,9 @@ public allBlogs : any;
         console.log(error.errorMessage);
       }
       
-    );*/
-    console.log('final result is = '+this.allBlogs);
-    console.log('that readable result is = '+JSON.stringify(this.allBlogs))
+    )
+    
+    
   }
 
  

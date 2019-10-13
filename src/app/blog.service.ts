@@ -68,8 +68,7 @@ export class BlogService {
 
   //function to return whole array
   public getAllBlogs(){
-    console.log('let see='+this.data)
-    alert(this.data.status);
+       
     return this.data.allBlogs;
   }
 

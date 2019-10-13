@@ -1,10 +1,16 @@
+//abhi abhi "rxjs-compat": "^6.5.3",
 import { BrowserModule } from '@angular/platform-browser';
+
+//importing formsModule and HttpClientModule
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { NgModule } from '@angular/core';
-//abhi abhi
-//import { HttpClientModule } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http'; 
+
 //router module used for setting up the application level route
 import { RouterModule , Routes} from '@angular/router';
+
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -35,10 +41,10 @@ import { BlogHttpService } from './blog-http.service';
   ],
   
   //array importing something
-  imports: [
-    HttpClientModule,
+  imports: [    
     BrowserModule,
-
+    HttpClientModule,
+    FormsModule,
     //router module forRoot methood to declare the possible routes in application
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
