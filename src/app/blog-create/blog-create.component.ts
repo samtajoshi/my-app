@@ -3,6 +3,7 @@ import { BlogHttpService } from '../blog-http.service';
 
 //to activate navigation
 import {ActivatedRoute,Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,7 +22,7 @@ export class BlogCreateComponent implements OnInit {
   public possibleCategories : any;
 
 
-  constructor(private blogHttpServive : BlogHttpService , public _route :ActivatedRoute, public router : Router) { 
+  constructor(private blogHttpServive : BlogHttpService , public _route :ActivatedRoute, public router : Router, public toastr : ToastrService) { 
     //this.blogTitle ='my name is'
      this.possibleCategories = ["comedy","dream","action","technology"];
   }
@@ -41,7 +42,7 @@ export class BlogCreateComponent implements OnInit {
       data=>{
         console.log('blog created successfully');
         console.log(data);
-        alert('blog posted successfully');
+        this.toastr.success('blog posted successfully');
         
         setTimeout(()=>{
           this.router.navigate(['/blog',data.data.blogId]);

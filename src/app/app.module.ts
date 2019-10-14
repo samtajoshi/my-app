@@ -25,6 +25,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogService } from './blog.service';
 import { BlogHttpService } from './blog-http.service';
 
+//imports related to toastr
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 //decorator
 @NgModule({
@@ -45,6 +49,8 @@ import { BlogHttpService } from './blog-http.service';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     //router module forRoot methood to declare the possible routes in application
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},

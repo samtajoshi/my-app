@@ -8,6 +8,7 @@ import { BlogHttpService } from '../blog-http.service';
 
 //importing Location related code for goBack button
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class BlogViewComponent implements OnInit {
   public myId : any;
 
 
-  constructor(public bloghttpService : BlogHttpService, private _route: ActivatedRoute , public router : Router , public location : Location) {
+  constructor(public bloghttpService : BlogHttpService, private _route: ActivatedRoute , public router : Router , public location : Location,public toastr : ToastrService) {
     console.log('constructor is called');
      //getting the blogId from the route
      this.myId = this._route.snapshot.paramMap.get('blogId'); 
@@ -46,7 +47,7 @@ export class BlogViewComponent implements OnInit {
     this.bloghttpService.deleteBlog(this.myId).subscribe(
 
       response => { console.log(response.message);
-                    alert(response.message);
+                    this.toastr.success(response.message);
                     this.router.navigate(['/home'])
       },
       error => { console.log(error.errorMessage) }

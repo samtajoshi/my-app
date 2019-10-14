@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Router} from '@angular/router';
 import { BlogHttpService } from '../blog-http.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog-edit',
@@ -18,7 +19,7 @@ export class BlogEditComponent implements OnInit {
   public possibleCategories : any;
 
 
-  constructor(public _route : ActivatedRoute , public router : Router, public bloghttpService : BlogHttpService) {
+  constructor(public _route : ActivatedRoute , public router : Router, public bloghttpService : BlogHttpService, private toastr: ToastrService) {
 
     //to get the blogId
     this.blogId = this._route.snapshot.paramMap.get('blogId');
@@ -47,7 +48,7 @@ export class BlogEditComponent implements OnInit {
       data=>{
         console.log('blog created successfully');
         console.log(data);
-        alert('blog posted successfully');
+        this.toastr.success('blog edited successfully');
         
         setTimeout(()=>{
           this.router.navigate(['/blog',this.blogId]);
